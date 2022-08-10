@@ -1,0 +1,95 @@
+﻿@page
+@model PizzaGrande.Pages.Drinks.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Напитки</h1>
+
+<p>
+    <a asp-page="Create">Създай нова</a>
+</p>
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Търси по име:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" />
+            <a asp-page="./Index">Лист</a>
+        </p>
+        @{
+            var prevDisabled = !Model.Drink.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.Drink.HasNextPage ? "disabled" : "";
+        }
+        <a asp-page="./Index"
+           asp-route-sortOrder="@Model.CurrentSort"
+           asp-route-pageIndex="@(Model.Drink.PageIndex - 1)"
+           asp-route-currentFilter="@Model.CurrentFilter"
+           class="btn btn-default @prevDisabled">
+            Назад
+        </a>
+        <a asp-page="./Index"
+           asp-route-sortOrder="@Model.CurrentSort"
+           asp-route-pageIndex="@(Model.Drink.PageIndex + 1)"
+           asp-route-currentFilter="@Model.CurrentFilter"
+           class="btn btn-default @nextDisabled">
+            Напред
+        </a>
+
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sort="@Model.DrinkNameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Drink[0].DrinkName)
+                </a>
+            </th>
+
+
+            <th>
+                <a asp-page="./Index" asp-route-sort="@Model.PriceSort">
+                    @Html.DisplayNameFor(model => model.Drink[0].Price)
+                </a>
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Drink[0].LongDescription)
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Drink[0].ImageUrl)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Drink)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DrinkName)
+                </td>
+                <td>
+
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LongDescription)
+                </td>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" >
+                    
+                </td>
+
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.DrinkId">Редактирай</a> |
+                    <a asp-page="./Details" asp-route-id="@item.DrinkId">Детайли</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.DrinkId">Изтрий</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PizzaGrande</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <style>
+    </style>
+</head>
+<body>
+    <header>
+
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">Пицария "Grande"</a>
+                </div>
+                @if (User.IsInRole("Manager"))
+                {
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="MenuPizza">Меню Пици</a></li>
+                            <li><a href="MenuDrink">Меню Напитки</a></li>
+                           
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Добавяне <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <a class="dropdown-item text-dark" asp-area="" asp-page="/Pizzas/Index">Добавяне на Пици</a>
+                                    <li class="divider"></li>
+                                    <a class="dropdown-item text-dark" asp-area="" asp-page="/Drinks/Index">Добавяне на Напитки</a>
+                                    <li class="divider"></li>
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Categories/Index"> Добавяне на Категории</a>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <partial name="_LoginPartial" />
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    if (User.IsInRole("Customer"))
+                    {
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="MenuPizza">Меню Пици</a></li>
+                                <li><a href="MenuDrink">Меню Напитки</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <partial name="_LoginPartial" />
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="Menu">Меню</a></li>
+                                <li><a href="ContactUs">Контакти</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <partial name="_LoginPartial" />
+                            </ul>
+                        </div>
+                    }
+
+                }
+            </div>
+        </nav>
+
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @*<footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - PizzaGrande - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>*@
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,103 @@
+﻿@page
+@model PizzaGrande.Pages.Pizzas.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Пици</h1>
+
+<p>
+    <a asp-page="Create">Създай нова</a>
+   
+</p>
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Търси по име:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Търси" class="btn btn-default"/>
+            <a asp-page="./Index">Лист</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sort="@Model.PizzaNameSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Pizza[0].PizzaName)
+                </a>
+            </th>
+            @{
+                var prevDisabled = !Model.Pizza.HasPreviousPage ? "disabled" : "";
+                var nextDisabled = !Model.Pizza.HasNextPage ? "disabled" : "";
+            }
+            <a asp-page="./Index"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-pageIndex="@(Model.Pizza.PageIndex - 1)"
+               asp-route-currentFilter="@Model.CurrentFilter"
+               class="btn btn-default @prevDisabled">
+                Назад
+            </a>
+            <a asp-page="./Index"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-pageIndex="@(Model.Pizza.PageIndex + 1)"
+               asp-route-currentFilter="@Model.CurrentFilter"
+               class="btn btn-default @nextDisabled">
+                Напред
+            </a>
+            <th>
+                @Html.DisplayNameFor(model => model.Pizza[0].ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pizza[0].ShortDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pizza[0].LongDescription)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sort="@Model.PriceSort">
+                    @Html.DisplayNameFor(model => model.Pizza[0].Price)
+                </a>
+            </th>
+
+
+            <th>
+                
+                @Html.DisplayNameFor(model => model.Pizza[0].ImageUrl)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Pizza) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PizzaName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LongDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="Grande" style="width:100%">
+               
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PizzaId">Редактирай</a> |
+                <a asp-page="./Details" asp-route-id="@item.PizzaId">Детайли</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PizzaId">Изтрий</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

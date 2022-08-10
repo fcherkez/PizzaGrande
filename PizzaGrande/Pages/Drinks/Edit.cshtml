@@ -1,0 +1,51 @@
+﻿@page
+@model PizzaGrande.Pages.Drinks.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Редактирай</h1>
+
+<h4>Напитки</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Drink.DrinkId" />
+            <div class="form-group">
+                <label asp-for="Drink.DrinkName" class="control-label"></label>
+                <input asp-for="Drink.DrinkName" class="form-control" />
+                <span asp-validation-for="Drink.DrinkName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Drink.Price" class="control-label"></label>
+                <input asp-for="Drink.Price" class="form-control" />
+                <span asp-validation-for="Drink.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Drink.LongDescription" class="control-label"></label>
+                <input asp-for="Drink.LongDescription" class="form-control" />
+                <span asp-validation-for="Drink.LongDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Drink.ImageUrl" class="control-label"></label>
+                <input asp-for="Drink.ImageUrl" class="form-control" />
+                <span asp-validation-for="Drink.ImageUrl" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Върни се в листа</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

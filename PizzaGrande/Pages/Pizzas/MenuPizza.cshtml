@@ -1,0 +1,81 @@
+﻿@page "/MenuPizza"
+@model PizzaGrande.Pages.Pizzas.MenuPizzaModel
+    <html>
+    <head>
+        <style>
+            .column {
+                float: left;
+                width: 100%;
+                padding: 0 10px;
+            }
+            .row {
+                margin: 0 -5px;
+            }
+
+                /* Clear floats after the columns */
+                .row:after {
+                    content: "";
+                    display: table;
+                    clear: both;
+                }
+
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                max-width: 300px;
+                margin: auto;
+                text-align: center;
+                font-family: arial;
+            }
+
+            .price {
+                color: grey;
+                font-size: 22px;
+            }
+
+            .card button {
+                border: none;
+                outline: 0;
+                padding: 12px;
+                color: white;
+                background-color: #000;
+                text-align: center;
+                cursor: pointer;
+                width: 100%;
+                font-size: 18px;
+            }
+
+                .card button:hover {
+                    opacity: 0.7;
+                }
+        </style>
+    </head>
+    <body>
+
+        <h2 style="text-align:center">Меню Пици</h2>
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    @foreach (var item in Model.Pizza)
+                    {
+                        <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" width="100">
+
+                        <h1>@Html.DisplayFor(modelItem => item.PizzaName)</h1>
+
+                        <p>@Html.DisplayFor(modelItem => item.Price)</p>
+
+
+                        <p> @Html.DisplayFor(modelItem => item.LongDescription)</p>
+
+                            <li>
+                                <p><button><a asp-page="/OrderDetails/Index" asp-route-id="@item.PizzaId">Купи</a></button></p>
+                            </li>
+                    }
+                </div>
+            </div>
+        </div>
+               
+
+        </body>
+    </html>
+        @{
+        }

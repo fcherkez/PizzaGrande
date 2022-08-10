@@ -1,0 +1,61 @@
+﻿@page
+@model PizzaGrande.Pages.Pizzas.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Създай</h1>
+
+<h4>Пици</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Pizza.PizzaName" class="control-label"></label>
+                <input asp-for="Pizza.PizzaName" class="form-control" />
+                <span asp-validation-for="Pizza.PizzaName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pizza.ReleaseDate" class="control-label"></label>
+                <input asp-for="Pizza.ReleaseDate" class="form-control" />
+                <span asp-validation-for="Pizza.ReleaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pizza.ShortDescription" class="control-label"></label>
+                <input asp-for="Pizza.ShortDescription" class="form-control" />
+                <span asp-validation-for="Pizza.ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pizza.LongDescription" class="control-label"></label>
+                <input asp-for="Pizza.LongDescription" class="form-control" />
+                <span asp-validation-for="Pizza.LongDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pizza.Price" class="control-label"></label>
+                <input asp-for="Pizza.Price" class="form-control" />
+                <span asp-validation-for="Pizza.Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Pizza.ImageUrl" class="control-label"></label>
+                <input asp-for="Pizza.ImageUrl" class="form-control" />
+                <span asp-validation-for="Pizza.ImageUrl" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Върни се в листа</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

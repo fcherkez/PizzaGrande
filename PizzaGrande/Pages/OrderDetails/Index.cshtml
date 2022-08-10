@@ -1,0 +1,60 @@
+﻿@page
+@model PizzaGrande.Pages.OrderDetails.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Вашата поръчка е приета успешно!</h1>
+
+@*<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDetail[0].PizzaName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDetail[0].DrinkName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDetail[0].Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDetail[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDetail[0].Order)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.OrderDetail) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PizzaName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DrinkName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.OrderId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.OrderDetailId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.OrderDetailId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.OrderDetailId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@

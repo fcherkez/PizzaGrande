@@ -1,0 +1,166 @@
+﻿@page "/Menu"
+@model PizzaGrande.Pages.Pizzas.MenuModel
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+            .column {
+                float: right;
+                width: 30%;
+                padding: 0 10px;
+            }
+
+            .row {
+                margin: 0 -5px;
+            }
+
+                /* Clear floats after the columns */
+                .row:after {
+                    content: "";
+                    display: table;
+                    clear: both;
+                }
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                max-width: 300px;
+                margin: auto;
+                text-align: center;
+                font-family: arial;
+            }
+
+            .price {
+                color: grey;
+                font-size: 22px;
+            }
+
+            .card button {
+                border: none;
+                outline: 0;
+                padding: 12px;
+                color: white;
+                background-color: #000;
+                text-align: center;
+                cursor: pointer;
+                width: 100%;
+                font-size: 18px;
+            }
+
+                .card button:hover {
+                    opacity: 0.7;
+                }
+        </style>
+    </head>
+    <body>
+        <h1>Добре дошли в нашият сайт! Тук може да намерите разнообразие от току-що изпечени пици! За поръчки, моля направете регистрация!  </h1>
+        <h2 style="text-align:center">Меню "Пици"</h2>
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <img src="~/image/margarita.jpg" alt="Margarita" style="width:100%">
+                    <h1>Маргарита</h1>
+                    <p class="price">3.00 лв.</p>
+                    <p>Състав: доматен сос, кашкавал, подправки</p>
+                </div>
+            </div>
+
+
+            <div class="column">
+                <div class="card">
+                    <img src="~/image/italia.jpg" alt="Italia" style="width:100%">
+                    <h1>Италия</h1>
+                    <p class="price">5.50 лв.</p>
+                    <p>Състав: доматен сос, шунка, сирене, маслини, кашкавал, подправки</p>
+                </div>
+            </div>
+
+
+            <div class="column">
+                <div class="card">
+                    <img src="~/image/grande.jpg" alt="Grande" style="width:100%">
+                    <h1>Пица "Гранде"</h1>
+                    <p class="price">7.00 лв.</p>
+                    <p>Състав: доматен сос, шунка, пилешко месо, царевица, кашкавал, подправки</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <img src="~/image/peperoni.jpg" alt="Peperoni" style="width:100%">
+                        <h1>Пеперони</h1>
+                        <p class="price">8.00 лв.</p>
+                        <p>Състав: Състав: доматен сос, пеперони, моцарела, домати, кашкавал и подправки</p>
+                    </div>
+                </div>
+
+
+                <div class="column">
+                    <div class="card">
+                        <img src="~/image/vegy.jpg" alt="Vegy" style="width:100%">
+                        <h1>Вегетарианска пица</h1>
+                        <p class="price">5.00 лв.</p>
+                        <p>Състав: доматен сос, гъби, царевица, чушка, лук, кашкавал, поправки</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <h3 style="text-align:center">Меню "Напитки"</h3>
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <img src="~/image/kola.jpg"  alt="Kola" style="width:100%">
+                    <h1>Кока-кола</h1>
+                    <p class="price">2.00 лв.</p>
+                    <p>Газирана безалкохолна напитка</p>
+                </div>
+            </div>
+
+
+            <div class="column">
+                <div class="card">
+                    <img src="~/image/fanta.jpg"  alt="Fanta" style="width:100%">
+                    <h1>Фанта</h1>
+                    <p class="price">2.00 лв.</p>
+                    <p>Газирана безалкохолна напитка</p>
+                </div>
+            </div>
+
+
+            <div class="column">
+                <div class="card">
+                    <img src="~/image/kuins.jpg"  alt="Kuins" style="width:100%">
+                    <h1>Куинс</h1>
+                    <p class="price">2.00 лв.</p>
+                    <p>Негазирана безалкохолна напитка</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <img src="~/image/water.jpg" alt="Water" style="width:100%">
+                        <h1>Минерална вода</h1>
+                        <p class="price">2.00 лв.</p>
+                        <p>Минерална вода "Горна Баня"</p>
+                    </div>
+                </div>
+
+
+                <div class="column">
+                    <div class="card">
+                        <img src="~/image/icetea.jpg"  alt="IceTea" style="width:100%">
+                        <h1>Студен чай</h1>
+                        <p class="price">3.00 лв.</p>
+                        <p>Негазирана безалкохолна напитка</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </body>
+</html>
+
+@{
+}
